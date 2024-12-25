@@ -1,6 +1,10 @@
 # GeminiChatbot
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.9.
+<br>
+<a href="https://jayanttripathy.com/building-a-chatbot-in-angular-using-gemini-api/">Blog link </a>
+
+<img src="https://github.com/JayantTripathy/gemini-chatbot-angular/blob/main/gemini-chatbot-angular-image.gif">
 
 ## Development server
 
