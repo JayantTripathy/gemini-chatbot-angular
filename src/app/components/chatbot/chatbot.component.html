@@ -1,0 +1,60 @@
+<section>
+  <div class="container py-5">
+
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <div class="card" id="chat1" style="border-radius: 15px; width: 500px;">
+          <div class="card-header d-flex align-items-center p-3 bg-info text-white border-bottom-0"
+            style="border-top-left-radius: 15px; border-top-right-radius: 15px;justify-content: center;">
+            <p class="mb-0 fw-bold">Gemini Chatbot AI with Angular</p>
+          </div>
+          <div class="card-body">
+
+            <div class="chatbot-messages">
+              <div class="d-flex flex-row justify-content-start mb-4">
+                <i class="fa-solid fa-robot" style="font-size: x-large; color: #0056b3;"></i>
+                <div class="p-3 ms-3 subText">
+                  <p class="small mb-0">
+                    Hey there <i class="fa-duotone fa-solid fa-hands-bubbles"></i> <br>
+                    How I can help you today?
+                  </p>
+                </div>
+              </div>
+
+              <div *ngFor="let message of messages"
+                [ngClass]="{'chatbot-message': true, user: message.role === 'user', assistant: message.role === 'assistant'}">
+
+                <span *ngIf="!message.isCodeBlock && message.role === 'user'" style="justify-self: flex-end;">{{
+                  message.content}}</span>
+                <div class="d-flex flex-row justify-content-start mb-4" style="margin-top: 50px;width: 409px;"
+                  *ngIf="!message.isCodeBlock && message.role != 'user'">
+
+                  <i class="fa-solid fa-robot" style="font-size: x-large; color: #0056b3;"></i>
+
+                  <div class="p-3 ms-3 subText">
+                    <p class="small mb-0">
+                      {{ message.content}}
+                    </p>
+                  </div>
+                </div>
+                <pre *ngIf="message.isCodeBlock" class="code-block">
+                    <code>{{ message.content.slice(3, -3) }}</code> 
+                  </pre>
+              </div>
+              <div #messagesEnd></div>
+            </div>
+
+            <div class="chatbot-form">
+              <input type="text" #inputBox class="chatbot-input" [(ngModel)]="input"
+                (keydown.enter)="sendMessage(inputBox.value)" placeholder="Type your message..." />
+              <button type="submit" class="chatbot-button" (click)="sendMessage(inputBox.value)">Send</button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
